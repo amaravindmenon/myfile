@@ -39,10 +39,10 @@ nuclei -l bugs/$i/subdomains.txt -t nuclei-templates/file -o bugs/$i/files.txt
 echo "Nuclei scan completed"
 
 echo "XSS Hunting using gf and dalfox and xsstrike"
-/Users/aravind/go/bin/waybackurls $i > bugs/$i/temp_waybackxss.txt
-cat bugs/$i/temp_waybackxss.txt | /Users/aravind/go/bin/gf xss | sed 's/=.*/=/' | egrep -iv ".(jpg|jpeg|gif|tif|tiff|ico|pdf|svg|png|css|woff|woff2)" > bugs/$i/temp2_waybackxss.txt
+waybackurls $i > bugs/$i/temp_waybackxss.txt
+cat bugs/$i/temp_waybackxss.txt | gf xss | sed 's/=.*/=/' | egrep -iv ".(jpg|jpeg|gif|tif|tiff|ico|pdf|svg|png|css|woff|woff2)" > bugs/$i/temp2_waybackxss.txt
 sort bugs/$i/temp2_waybackxss.txt | uniq -i > bugs/$i/waybackxss.txt
-cat bugs/$i/waybackxss.txt | /Users/aravind/go/bin/dalfox pipe -o bugs/$i/dalfoxoutput.txt
+cat bugs/$i/waybackxss.txt | dalfox pipe -o bugs/$i/dalfoxoutput.txt
 echo "XSSATACK FINISH"
 
 done
