@@ -16,12 +16,9 @@ scan started for $i
 
 mkdir bugs/$i
 
-echo "XSS Hunting using gf and dalfox and xsstrike"
-waybackurls $i > bugs/$i/temp_waybackxss.txt
-cat bugs/$i/temp_waybackxss.txt | gf xss | sed 's/=.*/=/' | egrep -iv ".(jpg|jpeg|gif|tif|tiff|ico|pdf|svg|png|css|woff|woff2)" > bugs/$i/temp2_waybackxss.txt
-sort bugs/$i/temp2_waybackxss.txt | uniq -i > bugs/$i/waybackxss.txt
-cat bugs/$i/waybackxss.txt | dalfox pipe -o bugs/$i/dalfoxoutput.txt
-echo "XSSATACK FINISH"
+amass enum -passive -norecursive -noalts -d $i -o bugs/$i/domain.txt
+cat bugs/$i/domain.txt | httpx -o bugs/$i/domainhttpx.txt
+cat bugs/$i/domainhttpx.txt | nuclei -t nuclei-templates
 
 done
 
