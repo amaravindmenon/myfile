@@ -18,7 +18,7 @@ mkdir bugs/$i
 
 amass enum -passive -norecursive -noalts -d $i -o bugs/$i/domain.txt
 cat bugs/$i/domain.txt | httpx -o bugs/$i/domainhttpx.txt
-cat bugs/$i/domainhttpx.txt | nuclei -t nuclei-templates
+cat bugs/$i/domainhttpx.txt | nuclei -t /root/nuclei-templates
 
 done
 
