@@ -48,3 +48,23 @@ echo "done"
 git clone https://github.com/m4ll0k/takeover.git
 echo "done"
 
+# uro install
+pip3 install uro
+
+# freq install
+go install github.com/takshal/freq@latest
+
+# go install
+go install github.com/tomnomnom/gf@latest
+mkdir ~/.gf
+git clone https://github.com/1ndianl33t/Gf-Patterns.git
+cd Gf-Patterns
+mv * ../
+echo "done"
+
+#xssstrike
+git clone https://github.com/s0md3v/XSStrike.git
+cd XSStrike
+pip3 install -r requirements.txt
+cd ..
+echo "done"
