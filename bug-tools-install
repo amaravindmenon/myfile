@@ -1,0 +1,50 @@
+sudo apt-get update -y 
+sudo apt-get upgrade -y
+
+sudo apt-get install python3-pip -y
+sudo apt-get install git -y
+
+#installing go 17
+wget https://dl.google.com/go/go1.17.7.linux-amd64.tar.gz
+sudo tar -xvf go1.17.7.linux-amd64.tar.gz
+sudo mv go /usr/local
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/Projects/Proj1
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+
+#Installing httpx tool  
+go install github.com/projectdiscovery/httpx/cmd/httpx@latest
+echo "done"
+
+#Installing waybackurls tool 
+go install github.com/tomnomnom/waybackurls@latest
+echo "done"
+
+#Installing Dalfox tool 
+go install github.com/hahwul/dalfox/v2@latest
+echo "done"
+
+#Installing Qsreplace tool
+go install github.com/tomnomnom/qsreplace@latest
+echo "done"
+
+#Installing Qsreplace tool
+go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+echo "done"
+
+#installing Amass tool
+go install -v github.com/OWASP/Amass/v3/...@master
+echo "done"
+
+#install log4j
+git clone https://github.com/fullhunt/log4j-scan.git
+cd log4j-scan/
+pip3 install -r requirements.txt
+cd ..
+echo "done"
+
+#installing subdomain takeover
+git clone https://github.com/m4ll0k/takeover.git
+echo "done"
+
